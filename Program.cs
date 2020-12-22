@@ -13,44 +13,20 @@ namespace Lesson4_2
             Console.WriteLine("Введите целые числа через пробел в одну строку:");
             string input = Console.ReadLine();
             Console.WriteLine();
-// Программа суммирует введеные числа, однако я теряю один первый символ в строке
-// Помогите я не смог разобраться...
             Console.WriteLine("Сумма введеных чисел равна " + sumAll(input));
             Console.ReadLine();
         }
 
         static int sumAll(string arr)
         {
-            // строка для объединения и последующей конверсии символов в число
-            string str = null;
-            int i;
-            // длина входящей строки - это массив символов минус единица
-            i = arr.Length - 1;
-            char[] a = new char[i];
-            // конвертация в строки в символьный массив 
-            a = arr.ToCharArray();
-            //  в эту переменную положим сумму чисел
-            int x = 0;
-            for (int j =i;j!=0;j-- )
+            int i=0;
+            string[] str = arr.Split(' ');
+            // я как-то не научился пользоваться foreach
+            foreach ( var word in str)
             {
-                if (a[j] == ' ' )
-                {
-                    // еще раз конвертируем строку в массив
-                    char[] b = str.ToCharArray();
-                    b = str.ToCharArray();
-                    // функция переворачивает значения в массиве
-                    Array.Reverse(b);
-                    string str1 = new string(b);
-                    x = x + Convert.ToInt32(str1);
-                    str =  null;
-                   
-                }
-                else
-                {
-                    str =str +  a[j];
-                }
+                i = i + Convert.ToInt32(word);
             }
-            return x;
+            return i;
         }
     }
 }
